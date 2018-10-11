@@ -6,6 +6,7 @@ var GameObj = function (position, size, selector) {
   this.updateCss()
 }
 GameObj.prototype.init = function (position, velocity) {
+
   this.position.x = position.x
   this.position.y = position.y
   this.velocity.x = velocity.x
@@ -22,6 +23,7 @@ GameObj.prototype.collide = function (otherObj) {
     otherObj.position.x < this.position.x + this.size.width - 10
   let inRangeY = otherObj.position.y > this.position.y &&
     otherObj.position.y < this.position.y + this.size.height
+
   if (inRangeX && inRangeY) {
     return inRangeX & inRangeY
   }
@@ -36,6 +38,7 @@ let gradeEL = document.querySelector('.grade')
 let startBtn = document.querySelector('.startBtn')
 let fishEL = document.querySelector('.fish')
 let hideArea = document.querySelector('.hideArea')
+
 let obstacleTopHead = document.querySelector('.obstacleTopHead')
 let obstacleDownHead = document.querySelector('.obstacleDownHead')
 
@@ -89,16 +92,14 @@ Obstacle.prototype.update = function (spacing) {
     this.position.y = this.position.originalY
     this.position.y += spacing
   } else {
+
     this.position.x -= 1.5
   }
   this.updateCss()
 }
-// Obstacle.prototype.convert = function () {
-//   this.position.y = this.position.originalY
-//   this.position.y += Math.random() * 50
-// }
 
 var Decoration = function (position, size, seletor) {
+
   GameObj.call(this, position, size, seletor)
   this.presetY = 0
 }
@@ -109,6 +110,7 @@ Decoration.prototype.update = function (velocity , position) {
     this.position.x = position
     this.convert()
   } else {
+
     this.position.x -= velocity
   }
   this.updateCss()
@@ -117,8 +119,8 @@ Decoration.prototype.update = function (velocity , position) {
 Decoration.prototype.convert = function () {
   this.position.y = this.position.originalY
   this.position.y += Math.random() * 400
-}
 
+}
 var Game = function () {
   this.timer = null
   this.grade = 0
@@ -165,6 +167,7 @@ Game.prototype.startGame = function () {
       infoWell.classList.add('d-none')
       resultWell.classList.add('d-none')
       vm.startGameMain()
+
     }
   }, 1000)
 }
@@ -186,11 +189,13 @@ Game.prototype.startGameMain = function () {
   }, 11)
 
   function collisionCheck() {
+
     if (obstacleTop.collide(fish) || obstacleDown.collide(fish) || fish.position.y < 0 || fish.position.y > 510) {
       game.endGame()
     }
   }
   function scoreChange() {
+
     if (obstacleTop.position.x == 30) {
       vm.grade += 10
       gradeEL.innerHTML = '分數 : ' + vm.grade
@@ -217,6 +222,7 @@ let decorationCloud_3 = new Decoration({ x: 550, y: 250, originalY: 0 }, { width
 let decorationCloud_4 = new Decoration({ x: 250, y: 350, originalY: 0 }, { width: getRandom(80, 150), height: getRandom(20, 80) }, '.decorationCloud_4')
 let aircraft = new Decoration({ x: 2000, y: 450, originalY: 0 }, { width: 60, height: 30 }, '.aircraft')
 function getRandom(x, range, divisor) {
+
   range = range || 1
   divisor = divisor || 1
   return (Math.floor(Math.random() * x) + range) / divisor
