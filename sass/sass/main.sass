@@ -1,0 +1,125 @@
+$light: #F8F9Fa
+$lightGreen: #a6ff8a
+$green: #4FFF4F
+$darkGreen: #00F000
+$shadeGreen: #00BD00	
+$yellow: #FFE180
+$darkYellow: #ffd430
+$sky: #d6fffd
+$cloud: #ebfffe
+$black: #151515
+$trp: transparent
+$ft-s : 16px
+$ft-m : 20px
+$ft-l : 24px
+
+@import 'reset'
+@import 'mixin'
+
+body,html
+    padding-left: calc(100vw - 100%)
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: $black
+    +font
+.gameGround
+    +size(375px,550px)
+    background: rgb(193,235,255)
+    background: -moz-linear-gradient(top, rgba(193,235,255,1) 0%, rgba(229,245,255,1) 66%, rgba(221,244,255,1) 100%)
+    background: -webkit-linear-gradient(top, rgba(193,235,255,1) 0%,rgba(229,245,255,1) 66%,rgba(221,244,255,1) 100%)
+    background: linear-gradient(to bottom, rgba(193,235,255,1) 0%,rgba(229,245,255,1) 66%,rgba(221,244,255,1) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1ebff', endColorstr='#ddf4ff',GradientType=0 )
+    position: relative
+    border: 5px solid $black
+    overflow: hidden
+.infoWell
+    display: flex
+    +size(10%)
+    position: absolute
+    left: 0
+    top: 0
+    background-color: #fff
+    z-index: 5
+    font-size: 50px
+    // display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    h2
+        padding: 30px
+    button
+        padding: 20px
+.fish
+    border-radius: 100px
+    z-index: 3
+    background-image: url(../../img/fool.png)
+    background-repeat: no-repeat
+    background-position: 50% 50%
+    background-size: cover
+.shake
+    animation-name: spin
+    animation-duration: 200ms
+    animation-iteration-count: infinite
+    animation-timing-function: linear
+    @keyframes spin  
+        from
+            transform: rotate(0deg)
+        50%
+            transform: rotate(30deg)
+        to 
+            transform: rotate(0deg)
+
+.obstacle
+    border-left: 2px solid rgba(0,0,0,.6)
+    border-right: 2px solid rgba(0,0,0,.6)
+    box-sizing: border-box
+    z-index: 1
+    position: absolute
+    background: rgb(28,241,21)
+    background: -moz-linear-gradient(left, rgba(28,241,21,1) 0%, rgba(220,250,156,1) 43%, rgba(156,244,98,1) 53%, rgba(28,241,21,1) 100%)
+    background: -webkit-linear-gradient(left, rgba(28,241,21,1) 0%,rgba(220,250,156,1) 43%,rgba(156,244,98,1) 53%,rgba(28,241,21,1) 100%)
+    background: linear-gradient(to right, rgba(28,241,21,1) 0%,rgba(220,250,156,1) 43%,rgba(156,244,98,1) 53%,rgba(28,241,21,1) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1cf115', endColorstr='#1cf115',GradientType=1 )
+    &.obstacleTop,&.obstacleDown
+        > div
+            border: 2px solid rgba(0,0,0,.6)
+            box-sizing: border-box
+            background: rgb(19,208,12)
+            background: -moz-linear-gradient(left, rgba(19,208,12,1) 0%, rgba(214,249,139,1) 35%, rgba(140,243,71,1) 53%, rgba(19,208,12,1) 100%)
+            background: -webkit-linear-gradient(left, rgba(19,208,12,1) 0%,rgba(214,249,139,1) 35%,rgba(140,243,71,1) 53%,rgba(19,208,12,1) 100%)
+            background: linear-gradient(to right, rgba(19,208,12,1) 0%,rgba(214,249,139,1) 35%,rgba(140,243,71,1) 53%,rgba(19,208,12,1) 100%)
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13d00c', endColorstr='#13d00c',GradientType=1 )
+            display: block
+            content: ''
+            width: 60px
+            height: 35px
+            border-radius: 4px
+            position: absolute
+            overflow: hidden
+            box-shadow:  inset 2px 2px 10px $light
+    &.obstacleDown
+        .obstacleDownHead
+            top: 0
+            left: -7px
+            z-index: 3
+    &.obstacleTop
+        .obstacleTopHead
+            bottom: 0
+            left: -7px
+            z-index: 3
+
+.grade
+    padding: 20px
+    font-size: 20px
+    position: relative
+    z-index: 5
+    font-weight: 800
+.decoration
+    position: absolute
+    background-color: #fff
+    // border: 1px solid #000
+    border-radius: 100px
+    overflow: hidden
+    box-shadow: inset -20px -20px 0 rgba(-5,-5,0,.02)
