@@ -1,0 +1,22 @@
+@mixin flex
+  display: flex
+  justify-content: center
+  align-items: center
+
+@mixin size($w,$h:$w,$r:0px)
+  width: $w
+  height: $h
+  border-radius: $r
+
+@mixin font
+  font-family: Microsoft JhengHei
+
+@mixin shadow($t:0.5s)
+  box-shadow: 0px 0px 20px rgba(0,0,0,.3)
+  transition: $t
+
+@mixin bgi($p:center center, $z:cover ,$r:no-repeat)
+  background-position: $p  
+  background-size: $z
+  background-repeat: $r
+
