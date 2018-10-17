@@ -139,7 +139,7 @@ Game.prototype.initControl = function () {
   }
 }
 Game.prototype.startGame = function () {
-  let time = 1
+  let time = 3
   let vm = this
   startBtn.classList.add('d-none')
   resultWell.classList.add('transparent')
